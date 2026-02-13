@@ -97,3 +97,19 @@ function addEvents(){
 	// This event alerts the user when they click the table
 	document.querySelector("table").addEventListener("click", clickme)
 }
+
+function debugAjax(){
+	
+	fetch("data/MegaCities.csv")
+		.then(function(response){
+			return response.text();
+		})
+		.then(function(text){
+			console.log(text);
+            debugCallback(text);
+        })
+};
+
+function debugCallback(text){
+	document.querySelector("#mydiv").insertAdjacentHTML('beforeend', 'GeoJSON data: ' + text)
+};
